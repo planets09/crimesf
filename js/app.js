@@ -24,6 +24,7 @@ $.ajax({
       for(var i =0; i<data.length; i++){
         // console.log(data[i].location.latitude);
         // console.log(data[i].location.longitude);
+        
 //use parseFloat to turn the string into a number:
       var myLat = parseFloat(data[i].location.latitude);
       // console.log(myLat);
