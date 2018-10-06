@@ -6,12 +6,13 @@ function getData(){
     // console.log(stats);
 //pass in the category to the url query string
 $.ajax({
-	   	url: "https://data.sfgov.org/resource/9v2m-8wqu.json?category=" + stats,
+      url: "https://data.sfgov.org/resource/nwbb-fxkq.json?incident_category=" + 'Burglary',
+	   	// url: "https://data.sfgov.org/resource/9v2m-8wqu.json?category=" + stats,
       type: "GET",
 	   	dataType: "json",
 //getting the data and then use the data for next step:
 	   	success: function(data) {
-      console.log(data);
+      // console.log(data);
 
       //create new instance of the map for to drop markers
     	var map = new google.maps.Map(document.getElementById('map'), {
@@ -26,16 +27,16 @@ $.ajax({
         // console.log(data[i].location.longitude);
         
 //use parseFloat to turn the string into a number:
-      var myLat = parseFloat(data[i].location.latitude);
+      var myLat = parseFloat(data[i].latitude);
       // console.log(myLat);
-      var myLng = parseFloat(data[i].location.longitude);
+      var myLng = parseFloat(data[i].longitude);
       // console.log(myLng);
       var myLatLng = {lat: myLat, lng: myLng}
       // console.log(myLatLng);
       var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
-          title: data[i].descript + ' ' + data[i].date + ' ' + data[i].dayofweek + ' ' + data[i].address + ' ' + data[i].pddistrict
+          title: data[i].report_type_description + ' ' + data[i].incident_date + ' ' + data[i].incident_day_of_week + ' ' + data[i].intersection + ' ' + data[i].police_district
         })
       // console.log(marker);
       }
