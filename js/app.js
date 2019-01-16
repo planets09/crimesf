@@ -1,10 +1,16 @@
 
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 37.773972, lng: -122.431297},
+    zoom: 11,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+}
 
 function getData(){
 //get the category from check boxes to feed to our url query string
     var stats = ($('input[name=category]:checked').val());
-
-//pass in the category to the url query string
+    //pass in the category to the url query string
 $.ajax({
       url: "https://data.sfgov.org/resource/nwbb-fxkq.json?incident_category=" + stats,
       type: "GET",
